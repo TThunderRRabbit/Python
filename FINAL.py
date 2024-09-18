@@ -31,7 +31,6 @@ while terminate != "QUIT":
             x = 0
             while x < len(listGuess):
                 i = 0
-                alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
                 while i < len(alpha):
                     if listGuess[x] == beta[i]:
                         listGuess[x] = alpha[i]
@@ -90,4 +89,3 @@ while terminate != "QUIT":
                         i += 1
     elif word == "QUIT":
         begin = "no"
-
