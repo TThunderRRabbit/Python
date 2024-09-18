@@ -1,7 +1,10 @@
 import random
 terminate = "PLAY"
+notFirstGame = "no"
 while terminate != "QUIT":
     word = input("Please enter a word for the player to guess:")
+    if word == "QUIT" and notFirstGame == "yes":
+        terminate = "QUIT"
     if word == "RANDOM":
         randomNumber = random.random()
         if 0<=randomNumber< 0.2:
@@ -71,13 +74,13 @@ while terminate != "QUIT":
                 if list(word) == blank:
                     correct = "yes"
                     print("Congratulations! You win!")
-                    terminate = input("QUIT OR PLAY?")
+                    notFirstGame = "yes"
                     
                     
                 n -= 1 
                 if n == 0 and list(word) != blank:
                     print("SORRY, YOU LOSE!")
-                    terminate = input("QUIT OR PLAY?")
+                    notFirstGame = "yes"
 
                 elif list(word) != blank: 
                     i = 0
