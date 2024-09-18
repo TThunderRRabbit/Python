@@ -11,6 +11,11 @@ while begin == 'yes':
             i = 0
             blank = ["?", "?", "?", "?", "?"]    
             given = list(word)
+            if guess == "ALPHABET":
+                previously = "------"
+            else:
+                list(previously) = list(guess)
+                 
             while i<=4:      
                 if listGuess[i] == given[i]:
                     blank[i] = given[i]
@@ -30,7 +35,7 @@ while begin == 'yes':
                 print("Congratulations! You win!")
                 begin = 'no'
             n -= 1 
-            if n == 0 and word != blank:
+            if n == 0 and list(word) != blank:
                 print("SORRY, YOU LOSE!")
                 begin = 'no'
             elif list(word) != blank: 
@@ -39,5 +44,6 @@ while begin == 'yes':
                 while i <= 4: 
                     feedback += str(blank[i])
                     i += 1
-    
+    elif word == "QUIT":
+        begin = "no"
 
