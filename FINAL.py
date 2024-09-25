@@ -68,6 +68,7 @@ while terminate != "QUIT":
                         if listGuess[x] == given[i] and x != i:
                             if blank[x] == '?':
                                 blank[x] = "!"
+                                given[i] = "checked"
                         i +=1    
                     x += 1 
                 if list(word) == blank:

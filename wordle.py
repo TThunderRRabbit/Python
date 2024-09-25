@@ -8,7 +8,7 @@ while correct == "no" and n != 0:
     i = 0
     blank = ["?", "?", "?", "?", "?"]    
     given = list(word)
-    while i<=4:      
+    while i<=4:  #checks if its equal and removes the "?" in blank.
         if listGuess[i] == given[i]:
             blank[i] = given[i]
             given[i] = "checked"
@@ -16,10 +16,11 @@ while correct == "no" and n != 0:
     x = 0
     while x<=4:
         i = 0 
-        while i<=4:
-            if listGuess[x] == given[i] and x != i:
+        while i<=4: #changes the possibilities of '!'
+            if listGuess[x] == given[i] and x != i: #checks if x!=i so it goes through every index but not its position
                 if blank[x] == '?':
                     blank[x] = "!"
+                    given[i] = 'checked'#so whenever a possibility is encountered, that possibility will not be encountered anymore.
             i +=1    
         x += 1 
     if list(word) == blank:
