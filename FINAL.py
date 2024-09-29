@@ -1,10 +1,11 @@
 import random
-terminate = "PLAY"
+playGame = "YES"
 notFirstGame = "no"
-while terminate != "QUIT":
+while playGame != "NO":
     word = input("Please enter a word for the player to guess:")
+    
     if word == "QUIT" and notFirstGame == "yes":
-        terminate = "QUIT"
+        playGame = "NO"
     if word == "RANDOM":
         randomNumber = random.random()
         if 0<=randomNumber< 0.2:
@@ -23,6 +24,7 @@ while terminate != "QUIT":
         correct = "no"
         feedback = "-----"
         alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+        alphaTemporary = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
         beta = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         while correct == "no" and n != 0:
             guess = input(f"Guess the word, {n} guess(es) left: {feedback}")    
@@ -38,12 +40,12 @@ while terminate != "QUIT":
                 x += 1
             i = 0
             blank = ["?", "?", "?", "?", "?"]    
-            given = list(word)
+            given = list(word)            
             if guess == "ALPHABET":
                 i = 0
                 alphaRray = ""
-                while i <= (len(alpha)-1):
-                    alphaRray += alpha[i]
+                while i <= (len(alpha)-1): #creates the string of feedback when alphabet is pressed
+                    alphaRray += alphaTemporary[i]
                     i+=1
                 print(alphaRray) 
             else:   
@@ -52,7 +54,7 @@ while terminate != "QUIT":
                     i = 0 
                     while i<= (len(alpha)-1):
                         if listGuess[x] == alpha[i]:
-                            alpha[i] = ""
+                            alphaTemporary[i] = ""
                         i += 1
                     x+=1
                 i = 0        
