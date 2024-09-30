@@ -2,6 +2,7 @@ import random
 playGame = "YES"
 notFirstGame = "no"
 numberGames = 'notValid'
+
 def toUpperCase(characters):
     for x in range(len(characters)): #function that turns everything to uppercase
         for i in range(len(alpha)):
@@ -10,12 +11,14 @@ def toUpperCase(characters):
 alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 beta = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 while playGame != "NO": # will keep playing unless the player types 'quit' when asked what the word is
-    word = input("Please enter a word for the player to guess:")  #asks what the wordToGuess will be
+    word = input("Please enter a 5 letter word for the player to guess:")  #asks what the wordToGuess will be
     listWord = list(word) 
     toUpperCase(listWord) #converts the list version of the word to uppercase
     if word == "QUIT" and notFirstGame == "yes":
         playGame = "NO"
     word = '' #so we can convert the uppercase type of list word to string again
+    for x in range(len(listWord)): #converts the listword uppercase version to list again
+        word += listWord[x] 
     if word == "RANDOM": 
         randomNumber = random.random()
         if 0<=randomNumber< 0.2:
@@ -28,8 +31,6 @@ while playGame != "NO": # will keep playing unless the player types 'quit' when 
             word = "WORLD"
         else: 
             word = "JACOB"  
-    for x in range(len(listWord)): #converts the listword uppercase version to list again
-        word += listWord[x] 
     if len(list(word)) == 5: #checks if the word is 5, if not then it will ask again for input of word
         while numberGames == "notValid":
             n = int(input("how many tries would you like?"))
@@ -68,7 +69,7 @@ while playGame != "NO": # will keep playing unless the player types 'quit' when 
                     if listGuess[i] == given[i]:
                         blank[i] = given[i]
                         given[i] = "checked" #"checked" so that whenever the loop after this checks if a letter is in the wordToGuess but not in the right position, we will not get false positives
-                for x in range(4): #compares whether the character is equal to any of the wordToGuess character except its own position 
+                for x in range(5): #compares whether the character is equal to any of the wordToGuess character except its own position 
                     for i in range(5):
                         if x != i and listGuess[x] == given[i]: #compares whether the character is equal to any of the wordToGuess character except its own position 
                             if blank[x] == '?': 
